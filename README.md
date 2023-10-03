@@ -37,8 +37,8 @@ src/test
 
 以下のコマンドで実行
 
-```
-mypy @mypy_files.txt
+```shell
+mypy $mypy_files.txt ~.py
 ```
 
 ## 型判定の無視を強要する
@@ -51,6 +51,8 @@ a: any = 'hello' # type: ignore
 
 ## mypy のカスタム
 
+[カスタムの引数一覧のリンク (mypy 公式ドキュメント)](https://mypy.readthedocs.io/en/stable/config_file.html)
+
 1. `mypy.ini`を検証したい python ファイルがあるディレクトリに作成
 2. 以下の設定がおすすめ
 
@@ -60,7 +62,9 @@ a: any = 'hello' # type: ignore
 python_version = 3.8
 ; importされたpythonファイルの型判断を無視
 ignore_missing_imports = True
+; 検証してほしいpackageのモジュールを書く
 ; modules = []
+; 検証してほしいpackageを書く
 ; packages = []
 ; 型注釈のある関数から型注釈のない関数を呼び出すことを禁止するかどうか
 disallow_untyped_calls = True
@@ -112,7 +116,7 @@ warn_unused_ignores = True
 [mypy-numpy]
 
 # Sub directory options:
-[]
+[hoge.sub-hoge]
 ```
 
 3. 実行は、以下のコマンドになる
@@ -127,5 +131,5 @@ mypy --config-file mypy.ini ~.py
 2. 以下のコマンドで実行をかける
 
 ```shell
-mypy --config-file mypy.ini @mypy_files.txt
+mypy --config-file mypy.ini $mypy_files.txt ~.py
 ```
