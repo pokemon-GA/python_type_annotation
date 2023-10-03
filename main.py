@@ -1,5 +1,5 @@
 #型アノテーション
-from typing import List, Dict, Optional, Union, Tuple, Iterable, Final
+from typing import List, Dict, Optional, Union, Tuple, Iterable, Final, Literal
 
 
 #int型
@@ -55,10 +55,17 @@ str_or_int_2: Union[str, int] = 12
 # str_or_int_new_1: str | int = 'Hello'
 # str_or_int_new_2: str | int = 'Hello'
 
-
 #*関数のアノテーション
 def add(a:int, b: int) -> int:
     return int(a*b)
 
 #定数化
 UNKO_CONST: Final = 'HelloWorld'
+
+#自作の型
+#Literal[整数 or 文字列] <-このリスト内の者しか受け付けない
+hello: Literal['hello'] = 'hello'
+
+#TypeGuard
+#参考リンク
+#https://qiita.com/simonritchie/items/f64d31324f2ed804ecc8#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8C%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8Btypeguard%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
